@@ -1,0 +1,99 @@
+body {
+    margin :0;
+    /* 폰트 종류 */
+    font-family:'Sourcs Sans Pro';
+}
+
+a{
+    /* 글씨의 하이퍼링크?없애주기 */
+    text-decoration: none;
+    color : white;
+}
+
+.navbar {
+    display: flex;
+    /* 박스들 간격사이 동일하게 해주기 */
+    justify-content: space-between;
+    align-items:center;
+    background-color: rgb(96, 96, 238);
+    padding : 8px 12px;
+}
+
+.navbar_logo {
+    font-size: 24px;
+    
+}
+.navbar_logo i {
+    color : rgb(230, 135, 241);
+}
+
+.navbar_category {
+    display: flex;
+    list-style : none; 
+    padding-left: 0px;
+}
+
+.navbar_category li {
+    padding : 8px 12px;
+}
+
+.navbar_category li:hover {
+    background-color: skyblue;
+    border-radius: 4px;
+}
+
+.navbar_icon {
+    display: flex;
+    list-style: none;
+    padding-right : 0px;
+}
+
+.navbar_icon li {
+    padding : 8px 10px;
+}
+.navbar_toogleBtn {
+    display: none;
+    position : absolute;
+    right: 32px;
+    color : rgb(230, 135, 241);
+}
+/* !중요!
+    페이지의 사이즈가 해당 사이즈보다 아래로 줄어들게 되면
+    일어나게 하는 코드 
+# Media query : css에서 다양한 미디어에 대해 다른 스타일 적용시킬 수 있음*/
+    
+@media screen and (max-width : 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .navbar_category {
+        /* 디스플레이에서 안보이게 하다가 토글변수에 의해 클릭해야 나타나게 함 */
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        /* 카테고리의 크기 자체가 미디어쿼리에서 정해진 사이즈보다 작아서 너비를 100%로 맞춰줌 */
+        width : 100%;
+    }
+    .navbar_category li {
+        /* 카테고리의 크기 자체가 미디어쿼리에서 정해진 사이즈보다 작아서 너비를 100%로 맞춰줌 */
+        width: 100%;
+        text-align: center;
+    }
+    .navbar_icon {
+        /* 디스플레이에서 안보이게 하다가 토글변수에 의해 클릭해야 나타나게 함 */
+        display: none;
+        justify-content: center;
+        /* 아이콘의 크기 자체가 미디어쿼리에서 정해진 사이즈보다 작아서 너비를 100%로 맞춰줌 */
+        width: 100%;
+    }
+    .navbar_toogleBtn {
+        display: block;
+    }
+
+    /* 토글을 클릭해야 보여지는 코드 */
+    .navbar_category.active,
+    .navbar_icon.active {
+        display: flex;
+    }
+}
